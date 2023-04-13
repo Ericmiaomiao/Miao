@@ -1,0 +1,71 @@
+.out{
+  width: 296px;
+}
+.headimg{
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: aliceblue;
+  margin-top: 50px;
+  background-size: contain;
+  border: 1px solid #c2c6cc;
+}
+.name{
+  color: #1f2328;
+  font-size: 24px;
+  font-weight:500;
+  margin-top: 40px;
+}
+.login{
+  color: #656d76;
+  font-size: 20px;
+  font-weight: lighter;
+  margin-top: 3px;
+}
+.followButton{
+  width: 296px;
+  height: 32px;
+  line-height: 32px;
+  background-color: #f6f8fa;
+  text-align: center;
+  color: #5d6369;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 1px solid #d9dee2;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.followButton:hover{
+  background-color: #e7ecf1;
+  transition: all 0.3s;
+}
+.bio{
+  width: 296px;
+  height: 24px;
+  color: #1f2328;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.follow{
+  display: flex;
+}
+.follow>div{
+  font-size: 14px;
+  font-weight: bold;
+  color: #1f2328;
+}
+.follow>div>span{
+  font-size: 14px;
+  font-weight: normal;
+  color: #656d76;
+}
+.otherInfo{
+  margin-top: 30px;
+}
+.otherInfo>div{
+  color:#1f2328;
+  font-size: 14px;
+  margin-top: 8px;
+}
