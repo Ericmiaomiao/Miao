@@ -28,6 +28,20 @@
   color: rgba(209, 207, 207, 0.616);
   font-size: 12px;
   text-indent: 10px;
+  display: flex;
+}
+.search>input{
+  width: 210px;
+  background-color: #24292F;
+  border: none;
+  color: rgb(236, 236, 236);
+  margin-left: 5px;
+}
+.search>input:focus{
+  outline: none;
+}
+.search>div{
+  cursor: pointer;
 }
 .menu{
   height: 60px;

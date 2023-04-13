@@ -10,11 +10,13 @@ export default function User() {
   const [userInfo,setuserInfo] = useState({})
   // 初始化用户所有的项目
   const [userProj,setuserProj] = useState({})
+
+  // 初始化贡献者名
+  let [username,setusername] = useState('bailicangdu')
  
   useEffect(()=>{
-
     // 获取用户信息：bailicangdu
-    getUserInfo('bailicangdu')
+    getUserInfo(username)
     .then((res)=>{
       console.log('getUserInfo请求成功',res)
       setuserInfo(res.data)
@@ -24,7 +26,7 @@ export default function User() {
     })
 
     // 获得用户所有的项目
-    getUserProj('bailicangdu')
+    getUserProj(username)
     .then((res)=>{
       console.log('getUserProj请求成功',res)
       setuserProj(res.data)
@@ -32,14 +34,17 @@ export default function User() {
     .catch((err)=>{
       console.log('getUserProj请求失败',err)
     })
-  },[])
+  },[username])
 
   return (
     <div>
       {/* 用户界面导航条 */}
-      <Nav></Nav>
+      <Nav username={[username,setusername]}></Nav>
       {/* 用户界面的内容 */}
-      <Content userInfo={[userInfo,setuserInfo]} userProj={[userProj,setuserProj]}></Content>
+      <Content 
+      userInfo={[userInfo,setuserInfo]} 
+      userProj={[userProj,setuserProj]}
+      ></Content>
     </div>
   )
 }

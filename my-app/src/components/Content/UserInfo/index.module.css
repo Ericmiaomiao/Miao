@@ -1,15 +1,20 @@
 .out{
   width: 296px;
+  position: absolute;
+  top: 0;
 }
 .headimg{
-  width: 200px;
-  height: 200px;
+  /* width: 200px;
+  height: 200px; */
+  width: 300px;
+  height: 300px;
   margin: 0 auto;
   border-radius: 50%;
   background-color: aliceblue;
   margin-top: 50px;
   background-size: contain;
   border: 1px solid #c2c6cc;
+  transition: all 0.3s;
 }
 .name{
   color: #1f2328;
