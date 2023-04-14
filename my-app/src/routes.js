@@ -12,7 +12,7 @@ export default function routes() {
         <Route path="/" element={<User />} />
         <Route path="/login" element={<Login />} />
         <Route path="/user" element={<User />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail/:username/:projname" element={<Detail />} />
       </Routes>
     </div>
   )

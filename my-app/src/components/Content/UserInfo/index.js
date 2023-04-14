@@ -27,6 +27,9 @@ export default function UserInfo(props) {
         imgRef.current.style.height = '300px'
       }
     }
+    return ()=>{
+      window.onscroll=null;
+    }
   },[])
 
   return (
@@ -37,13 +40,15 @@ export default function UserInfo(props) {
       <div className={userInfoStyle.followButton}>Follow</div>
       <div className={userInfoStyle.bio}>{userInfo.bio}</div>
       <div className={userInfoStyle.follow}>
-        <div className={userInfoStyle.followers}>{userInfo.followers} <span>followers ·</span></div>
+        <div className={userInfoStyle.followers}>
+          <i className={userInfoStyle.iconpeaple}>&#xe60f;</i>
+          {userInfo.followers} <span>followers ·</span></div>
         <div className={userInfoStyle.following}>{userInfo.following} <span>following</span></div>
       </div>
       <div className={userInfoStyle.otherInfo}>
-        {userInfo.company?<div>公司：{userInfo.company}</div>:''}
-        {userInfo.location?<div>地址：{userInfo.location}</div>:''}
-        {userInfo.blog?<div>博客：{userInfo.blog}</div>:''}
+        {userInfo.company?<div><i className={userInfoStyle.iconcompany}>&#xe679;</i>公司：{userInfo.company}</div>:''}
+        {userInfo.location?<div><i className={userInfoStyle.iconwhere}>&#xe65f;</i>地址：{userInfo.location}</div>:''}
+        {userInfo.blog?<div><i className={userInfoStyle.iconhref}>&#xe620;</i>博客：{userInfo.blog}</div>:''}
       </div>
     </div>
   )

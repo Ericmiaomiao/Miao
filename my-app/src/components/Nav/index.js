@@ -23,7 +23,9 @@ export default function Nav(props) {
     <div>
       <div className={Navstyle.out}>
         <div className={Navstyle.center}>
-          <div className={Navstyle.logo}></div>
+          <div className={Navstyle.logo}>
+            <i className={Navstyle.iconlogo}>&#xe644;</i>
+          </div>
           <div className={Navstyle.menu}>
             Github Viewer
           </div>

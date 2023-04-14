@@ -15,7 +15,7 @@ export default function ProjectInfo(props) {
       {userProj.map((item)=>{
         return(
           <div key={item.id} className={ProjectStyle.proj}>
-            <Link to={`/detail?projName=${item.name}`}>
+            <Link to={`/detail/${item.owner.login}/${item.name}`}>
             <div className={ProjectStyle.name}>{item.name}</div>
             </Link>
             <div className={ProjectStyle.description}>{item.description}</div>
@@ -23,8 +23,8 @@ export default function ProjectInfo(props) {
               {item.topics.map((el,index)=>{return <div key={index}>{el}</div>})}
             </div>
             <div className={ProjectStyle.otherInfo}>
-              <div>收藏：{item.stargazers_count} </div>
-              <div> 分享：{item.forks_count}</div>
+              <div><i className={ProjectStyle.iconcollect}>&#xe621;</i>{item.stargazers_count} </div>
+              <div> <i className={ProjectStyle.iconshare}>&#xe654;</i>{item.forks_count}</div>
               <div> Updated on {dayjs(item.updated_at).format('YYYY-MM-DD')}</div>
             </div>
           </div>
