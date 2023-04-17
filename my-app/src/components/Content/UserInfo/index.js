@@ -9,6 +9,7 @@ export default function UserInfo(props) {
 
   let outRef = useRef(null)
   let imgRef = useRef(null)
+  
   // 监听左侧用户信息栏控制不动
   useEffect(()=>{
     window.onscroll = ()=>{

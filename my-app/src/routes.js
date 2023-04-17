@@ -9,10 +9,10 @@ export default function routes() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<User />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/detail/:username/:projname" element={<Detail />} />
+        <Route path="/" element={<Login/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/user" element={<User/>} />
+        <Route path="/detail/:username/:projname" element={<Detail/>} />
       </Routes>
     </div>
   )

@@ -1,8 +1,10 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 
 import projNavStyle from './index.module.css'
 
 export default function ProjNav(props) {
+  let navigate = useNavigate()
   // 接收props：
   const username = props.username[0]
   const projname = props.projname[0] 
@@ -11,7 +13,8 @@ export default function ProjNav(props) {
     <div className={projNavStyle.out}>
       <div className={projNavStyle.heart}>
         <div className={projNavStyle.top}>
-          <div className={projNavStyle.username}>{username}</div>
+          <div onClick={()=>{navigate({pathname:'/user'},{state:{username:username}})}}
+            className={projNavStyle.username }>{username}</div>
           <div> / </div>
           <div className={projNavStyle.projname}>{projname}</div>
         </div>
