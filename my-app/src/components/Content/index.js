@@ -20,7 +20,9 @@ export default function Content(props) {
         {/* 用户信息部分 */}
         <UserInfo userInfo={[userInfo,setuserInfo]}></UserInfo>
         {/* 用户的项目列表 */}
+        {
         <ProjectInfo userProj={[userProj,setuserProj]}></ProjectInfo>
+        }
       </div>
     </div>
   )
