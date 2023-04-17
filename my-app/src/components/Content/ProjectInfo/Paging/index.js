@@ -3,9 +3,9 @@ import React ,{useState,useEffect}from 'react'
 import pagingstyle from './index.module.css' 
 
 export default function Paging(props) {
-  // 获取的所有数据
+  // 获取用户所有项目的所有数据
   let userProj = props.userProj[0]
-  // 分页数组容器
+  // 获取分页数组容器
   let [pagecontainer,setpagecontainer] = props.pagecontainer
 
   // 初始化页数
