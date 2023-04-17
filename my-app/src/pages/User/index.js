@@ -9,7 +9,7 @@ export default function User() {
   // 初始化用户信息
   const [userInfo,setuserInfo] = useState({})
   // 初始化用户所有的项目
-  const [userProj,setuserProj] = useState({})
+  const [userProj,setuserProj] = useState('')
 
   // 初始化贡献者名
   let [username,setusername] = useState('bailicangdu')
