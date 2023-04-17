@@ -66,6 +66,12 @@
   font-weight: 500;
   font-size: 16px;
   margin-bottom: 20px;
+}.contributor>div:nth-of-type(2){
+  height: 200px;
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:auto;
+  /* background-color: #ddf4ff; */
 }
 .contributor>div:nth-of-type(2)>div{
   display: flex;
