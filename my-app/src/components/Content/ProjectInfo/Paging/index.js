@@ -6,7 +6,7 @@ export default function Paging(props) {
   // 获取用户所有项目的所有数据
   let userProj = props.userProj[0]
   // 获取分页数组容器
-  let [pagecontainer,setpagecontainer] = props.pagecontainer
+  let setpagecontainer = props.pagecontainer[1]
 
   // 初始化页数
   let [num,setnum] = useState(1)
@@ -24,9 +24,6 @@ export default function Paging(props) {
   let fenye =(userProj)=>{
     setpagecontainer(userProj.slice((num-1)*everynum,(num-1)*everynum+everynum))
   }
-  useEffect(()=>{
-    console.log('pagecontainer为',pagecontainer)
-  },[pagecontainer])
 
   // 页数改变后，执行分页函数
   useEffect(()=>{

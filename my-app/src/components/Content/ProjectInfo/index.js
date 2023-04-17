@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import dayjs from 'dayjs'
@@ -11,7 +11,8 @@ export default function ProjectInfo(props) {
   const [userProj,setuserProj] = props.userProj
 
   // 按分享排序
-  const sort1 =()=>{
+  const sort1 =(el)=>{
+    changeButtonStyle(el)
     for(let i =1;i<userProj.length; i++){
       for(let j =0; j<userProj.length-i;j++){
         if(userProj[j].forks_count<userProj[j+1].forks_count){
@@ -24,7 +25,8 @@ export default function ProjectInfo(props) {
     setuserProj([...userProj])
   }
   // 按收藏排序
-  const sort2 =()=>{
+  const sort2 =(el)=>{
+    changeButtonStyle(el)
     for(let i =1;i<userProj.length; i++){
       for(let j =0; j<userProj.length-i;j++){
         if(userProj[j].stargazers_count<userProj[j+1].stargazers_count){
@@ -37,21 +39,28 @@ export default function ProjectInfo(props) {
     setuserProj([...userProj])
   }
 
-  useEffect(()=>{
-    console.log('1',userProj)
-  },[userProj])
+  // 排序按钮样式切换
+  let [lastbutton,setLastbutton] = useState(null);
+  let changeButtonStyle=(el)=>{
+    if(lastbutton)lastbutton.className = `${ProjectStyle.sortbutton}`
+    el.target.className = `${ProjectStyle.sortbutton} ${ProjectStyle.onbutton}`
+    setLastbutton(el.target)
+  }
 
   // 初始化分页数组容器
   const [pagecontainer,setpagecontainer] = useState('')
   
   return (
     <div className={ProjectStyle.out}>
-      <Paging 
-        userProj={[userProj,setuserProj]}
-        pagecontainer={[pagecontainer,setpagecontainer]}
-      ></Paging>
-      <div onClick={sort1}>分享量</div>
-      <div onClick={sort2}>收藏量</div>
+      <div className={ProjectStyle.topButton}>
+        <Paging 
+          userProj={[userProj,setuserProj]}
+          pagecontainer={[pagecontainer,setpagecontainer]}
+        ></Paging>
+        排序：
+        <div className={ProjectStyle.sortbutton} onClick={sort1}>分享量</div>
+        <div className={ProjectStyle.sortbutton} onClick={sort2}>收藏量</div>
+      </div>
       <div className={ProjectStyle.topLine}></div>
       {pagecontainer&&pagecontainer.map((item)=>{
         return(

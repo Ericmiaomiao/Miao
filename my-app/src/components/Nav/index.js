@@ -1,8 +1,10 @@
 import React,{useRef,useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 import Navstyle from './index.module.css'
 
 export default function Nav(props) {
+  let navigate = useNavigate()
   
   // 初始化用户名
   const [username,setusername] = props.username
@@ -10,8 +12,13 @@ export default function Nav(props) {
   
   // 点击search，更改用户名
   let search=()=>{
+    if(!inputRef.current.value){
+      alert('请输入用户名')
+      return
+    }
     let name = inputRef.current.value
     setusername(name)
+    navigate({pathname:'/user'},{state:{username:name}})
   }
   
   // 搜索框value值和用户名绑定
