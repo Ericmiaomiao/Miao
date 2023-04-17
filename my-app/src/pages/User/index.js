@@ -1,14 +1,15 @@
 import React ,{useState,useEffect}from 'react'
 import {useLocation} from 'react-router-dom'
 
+import { getUserInfo,getUserProj } from '../../service'
+
 import Nav from '../../components/Nav'
 import Content from '../../components/Content'
-import { getUserInfo,getUserProj } from '../../service'
 
 export default function User() {
   
   // 初始化用户信息
-  const [userInfo,setuserInfo] = useState({})
+  const [userInfo,setuserInfo] = useState('')
   // 初始化用户所有的项目
   const [userProj,setuserProj] = useState('')
 
@@ -16,7 +17,7 @@ export default function User() {
   let [username,setusername] = useState(useLocation().state.username)
  
   useEffect(()=>{
-    // 获取用户信息：bailicangdu
+    // 获取用户信息：
     getUserInfo(username)
     .then((res)=>{
       console.log('getUserInfo请求成功',res)

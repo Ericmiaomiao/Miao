@@ -7,6 +7,7 @@ import ProjectStyle from './index.module.css'
 import Paging from './Paging'
 
 export default function ProjectInfo(props) {
+
   // 获取用户所有项目信息
   const [userProj,setuserProj] = props.userProj
 
@@ -16,7 +17,7 @@ export default function ProjectInfo(props) {
     for(let i =1;i<userProj.length; i++){
       for(let j =0; j<userProj.length-i;j++){
         if(userProj[j].forks_count<userProj[j+1].forks_count){
-          var temp = userProj[j];      //定义一个临时变量temp
+          let temp = userProj[j];      //定义一个临时变量temp
           userProj[j] = userProj[j + 1];
           userProj[j + 1] = temp;
         }
@@ -30,7 +31,7 @@ export default function ProjectInfo(props) {
     for(let i =1;i<userProj.length; i++){
       for(let j =0; j<userProj.length-i;j++){
         if(userProj[j].stargazers_count<userProj[j+1].stargazers_count){
-          var temp = userProj[j];      //定义一个临时变量temp
+          let temp = userProj[j];      //定义一个临时变量temp
           userProj[j] = userProj[j + 1];
           userProj[j + 1] = temp;
         }
@@ -53,6 +54,7 @@ export default function ProjectInfo(props) {
   return (
     <div className={ProjectStyle.out}>
       <div className={ProjectStyle.topButton}>
+        {/* 分页按钮： */}
         <Paging 
           userProj={[userProj,setuserProj]}
           pagecontainer={[pagecontainer,setpagecontainer]}
@@ -62,6 +64,8 @@ export default function ProjectInfo(props) {
         <div className={ProjectStyle.sortbutton} onClick={sort2}>收藏量</div>
       </div>
       <div className={ProjectStyle.topLine}></div>
+      
+      {/* 列表渲染： */}
       {pagecontainer&&pagecontainer.map((item)=>{
         return(
           <div key={item.id} className={ProjectStyle.proj}>

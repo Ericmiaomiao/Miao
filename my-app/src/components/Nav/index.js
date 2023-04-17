@@ -5,10 +5,10 @@ import Navstyle from './index.module.css'
 
 export default function Nav(props) {
   let navigate = useNavigate()
+  let inputRef = useRef(null) 
   
   // 初始化用户名
   const [username,setusername] = props.username
-  let inputRef = useRef(null) 
   
   // 点击search，更改用户名
   let search=()=>{

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import ContentNav from './ContentNav'
 import UserInfo from './UserInfo'
 import ProjectInfo from './ProjectInfo'
@@ -10,7 +11,6 @@ export default function Content(props) {
   // 获取用户信息：
   const [userInfo,setuserInfo] =  props.userInfo
   const [userProj,setuserProj] = props.userProj
-  
 
   return (
     <div>
@@ -20,9 +20,7 @@ export default function Content(props) {
         {/* 用户信息部分 */}
         <UserInfo userInfo={[userInfo,setuserInfo]}></UserInfo>
         {/* 用户的项目列表 */}
-        {
-        <ProjectInfo userProj={[userProj,setuserProj]}></ProjectInfo>
-        }
+        {<ProjectInfo userProj={[userProj,setuserProj]}></ProjectInfo>}
       </div>
     </div>
   )

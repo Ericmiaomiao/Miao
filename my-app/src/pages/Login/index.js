@@ -28,7 +28,7 @@ export default function Login() {
           </div>
           <div className={loginStyle.text}>密码</div>
           <div className={loginStyle.input}>
-            <input ref={passwordref}/>
+            <input type="password" ref={passwordref}/>
           </div>
           <div className={loginStyle.loginButton} onClick={sign}>Sign in</div>
         </div>
