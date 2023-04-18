@@ -1,10 +1,11 @@
 import React ,{useEffect,useState} from 'react'
-import { useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 
 import { getProjContent } from '../../service'
 
 import Nav from '../../components/Nav'
 import ProjDetail from '../../components/ProjDetail'
+import { getCookie } from '../../cookie'
 
 export default function Detail() {
   
@@ -15,6 +16,13 @@ export default function Detail() {
 
   // 初始化项目的详情内容
   const [projContent,setprojContent] = useState({})
+
+  useEffect(()=>{
+    if(getCookie('token')==null){
+      alert('请登录')
+      Navigate('/login')
+    }
+  },[])
 
   useEffect(()=>{
     // 获得用户项目的内容，由那些文件组成

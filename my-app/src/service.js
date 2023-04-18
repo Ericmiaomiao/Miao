@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-
 const ajax = axios.create({
   baseURL:'https://api.github.com'
 })
-
 
 // 获取用户的信息
 export const getUserInfo =(username)=>{

@@ -1,20 +1,28 @@
 import React ,{useState,useEffect}from 'react'
-import {useLocation} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 import { getUserInfo,getUserProj } from '../../service'
 
 import Nav from '../../components/Nav'
 import Content from '../../components/Content'
+import { getCookie } from '../../cookie'
 
 export default function User() {
+  let navigate = useNavigate()
   
   // 初始化用户信息
   const [userInfo,setuserInfo] = useState('')
   // 初始化用户所有的项目
   const [userProj,setuserProj] = useState('')
 
-  // 初始化贡献者名 从路由参数获取
-  let [username,setusername] = useState(useLocation().state.username)
+  // 初始化贡献者名 从cookie中获取
+  let [username,setusername] = useState(getCookie('token'))
+  useEffect(()=>{
+    if(getCookie('token')==null){
+      alert('请登录')
+      navigate('/login')
+    }
+  },[])
  
   useEffect(()=>{
     // 获取用户信息：
