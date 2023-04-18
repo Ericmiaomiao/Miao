@@ -2,6 +2,7 @@ import React,{useRef,useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 import Navstyle from './index.module.css'
+import { setCookie } from '../../cookie'
 
 export default function Nav(props) {
   let navigate = useNavigate()
@@ -18,13 +19,22 @@ export default function Nav(props) {
     }
     let name = inputRef.current.value
     setusername(name)
-    navigate({pathname:'/user'},{state:{username:name}})
+    setCookie('token',name,1)
+    navigate({pathname:'/user'})
+    window.location.reload() 
   }
   
   // 搜索框value值和用户名绑定
   useEffect(()=>{
     inputRef.current.value = username
   },[username])
+
+  // 点击退出，清除token
+  let signOut =()=>{
+    setCookie('token','',-1)
+    navigate({pathname:'/'})
+    window.location.reload() 
+  }
 
   return (
     <div>
@@ -40,6 +50,7 @@ export default function Nav(props) {
             <input ref={inputRef}/>
             <div onClick={search}>Search</div>
           </div>
+          <div className={Navstyle.signOut} onClick={signOut}>退出</div>
         </div>
       </div>
     </div>

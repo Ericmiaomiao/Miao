@@ -1,18 +1,23 @@
 import React, {useRef} from 'react'
 import {useNavigate} from 'react-router-dom'
 
+
+
 import loginStyle from './index.module.css'
+import { setCookie } from '../../cookie'
 
 export default function Login() {
   let navigate = useNavigate()
   let usernameref = useRef(null)
   let passwordref = useRef(null)
+
   let sign =()=>{
     if(!usernameref.current.value){
       alert('请输入用户名')
       return
     }
-    navigate({pathname:'/user'},{state:{username:usernameref.current.value}})
+    setCookie('token',usernameref.current.value,1)
+    navigate({pathname:'/user'})
   }
   return (
     <div className={loginStyle.out}>
