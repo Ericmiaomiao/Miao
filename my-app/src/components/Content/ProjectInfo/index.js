@@ -2,9 +2,10 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 
 import dayjs from 'dayjs'
-import ProjectStyle from './index.module.css'
 
 import Paging from './Paging'
+
+import ProjectStyle from './index.module.css'
 
 export default function ProjectInfo(props) {
 

@@ -1,16 +1,16 @@
 import React, {useRef} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-
+import { setCookie } from '../../cookie'
 
 import loginStyle from './index.module.css'
-import { setCookie } from '../../cookie'
 
 export default function Login() {
   let navigate = useNavigate()
   let usernameref = useRef(null)
   let passwordref = useRef(null)
 
+  // 点击登录后，存token，跳转用户界面
   let sign =()=>{
     if(!usernameref.current.value){
       alert('请输入用户名')
@@ -37,7 +37,6 @@ export default function Login() {
           </div>
           <div className={loginStyle.loginButton} onClick={sign}>Sign in</div>
         </div>
-
       </div>
     </div>
   )

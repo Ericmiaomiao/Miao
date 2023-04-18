@@ -1,12 +1,15 @@
 import React,{useEffect,useState} from 'react'
 
 import { getProjInfo,getProjContributor } from '../../../service'
+
 import projInfoStyle from './index.module.css'
 
 export default function ProjInfo(props) {
+  // 获取用户名和项目名
   const username = props.username[0]
   const projname = props.projname[0] 
-
+  
+  // 初始化项目的信息和贡献者
   const[projinfo,setprojinfo] = useState('')
   const[projContributor,setprojContributor] = useState('')
 
@@ -70,7 +73,6 @@ export default function ProjInfo(props) {
               </div>
             )
           })}
-
         </div>
       </div>
     </div>

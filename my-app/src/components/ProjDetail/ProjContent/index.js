@@ -9,7 +9,6 @@ export default function ProjContent(props) {
 
   return (
     <div className={projContentStyle.out}>
-      
       <div className={projContentStyle.button}>
         <div className={projContentStyle.branch}>
           <i className={projContentStyle.iconmaster}>&#xe607;</i>
@@ -31,7 +30,6 @@ export default function ProjContent(props) {
       </div>
       <div className={projContentStyle.content}>
         <div className={projContentStyle.contentNav}>
-          {/* <div className={projContentStyle.headimg}></div> */}
           <div className={projContentStyle.username}>{username}</div>
         </div>
         <div className={projContentStyle.contentFiles}>
@@ -59,7 +57,6 @@ export default function ProjContent(props) {
           })}
         </div>
       </div>
-      
     </div>
   )
 }

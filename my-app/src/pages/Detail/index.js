@@ -2,10 +2,10 @@ import React ,{useEffect,useState} from 'react'
 import { Navigate, useParams } from "react-router-dom"
 
 import { getProjContent } from '../../service'
+import { getCookie } from '../../cookie'
 
 import Nav from '../../components/Nav'
 import ProjDetail from '../../components/ProjDetail'
-import { getCookie } from '../../cookie'
 
 export default function Detail() {
   
@@ -16,7 +16,8 @@ export default function Detail() {
 
   // 初始化项目的详情内容
   const [projContent,setprojContent] = useState({})
-
+  
+  // 页面鉴权，没有token则返回登录页面
   useEffect(()=>{
     if(getCookie('token')==null){
       alert('请登录')
