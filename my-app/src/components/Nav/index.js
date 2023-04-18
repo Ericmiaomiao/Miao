@@ -1,8 +1,9 @@
 import React,{useRef,useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-import Navstyle from './index.module.css'
 import { setCookie } from '../../cookie'
+
+import Navstyle from './index.module.css'
 
 export default function Nav(props) {
   let navigate = useNavigate()

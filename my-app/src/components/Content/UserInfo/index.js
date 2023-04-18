@@ -47,9 +47,9 @@ export default function UserInfo(props) {
         <div className={userInfoStyle.following}>{userInfo.following} <span>following</span></div>
       </div>
       <div className={userInfoStyle.otherInfo}>
-        {userInfo.company?<div><i className={userInfoStyle.iconcompany}>&#xe679;</i>公司：{userInfo.company}</div>:''}
-        {userInfo.location?<div><i className={userInfoStyle.iconwhere}>&#xe65f;</i>地址：{userInfo.location}</div>:''}
-        {userInfo.blog?<div><i className={userInfoStyle.iconhref}>&#xe620;</i>博客：{userInfo.blog}</div>:''}
+        {userInfo.company&&<div><i className={userInfoStyle.iconcompany}>&#xe679;</i>公司：{userInfo.company}</div>}
+        {userInfo.location&&<div><i className={userInfoStyle.iconwhere}>&#xe65f;</i>地址：{userInfo.location}</div>}
+        {userInfo.blog&&<div><i className={userInfoStyle.iconhref}>&#xe620;</i>博客：{userInfo.blog}</div>}
       </div>
     </div>
   )

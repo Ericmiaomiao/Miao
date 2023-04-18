@@ -1,9 +1,10 @@
 import React from 'react'
+
 import ProjNav from './ProjNav'
 import ProjContent from './ProjContent'
+import ProjInfo from './ProjInfo'
 
 import projDetailstyle from './index.module.css'
-import ProjInfo from './ProjInfo'
 
 export default function ProjDetail(props) {
 
@@ -11,7 +12,6 @@ export default function ProjDetail(props) {
   const [username,setusername] = props.username
   const [projname,setprojname] = props.projname 
   const [projContent,setprojContent] = props.projContent
-
 
   return (
     <div>
