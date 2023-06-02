@@ -6,6 +6,8 @@
 2.   npm i axios -S
 3.   npm i react-router-dom
 4.   npm install dayjs --save
+5.   npm i --save react-redux
+6.   npm install @reduxjs/toolkit
 
 **实现的功能**：
 

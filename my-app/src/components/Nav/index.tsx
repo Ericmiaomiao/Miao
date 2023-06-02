@@ -4,10 +4,13 @@ import {useNavigate} from 'react-router-dom'
 import { setCookie } from '../../cookie'
 
 import Navstyle from './index.module.css'
+interface IProps {
+  username:[string,React.Dispatch<React.SetStateAction<string>>],
+}
 
-export default function Nav(props) {
+export default function Nav(props:IProps) {
   let navigate = useNavigate()
-  let inputRef = useRef(null) 
+  let inputRef = useRef<HTMLInputElement>(null) 
   
   // 初始化用户名
   const [username,setusername] = props.username
@@ -18,7 +21,7 @@ export default function Nav(props) {
       alert('请输入用户名')
       return
     }
-    let name = inputRef.current.value
+    let name:string = inputRef.current.value
     setusername(name)
     setCookie('token',name,1)
     navigate({pathname:'/user'})
@@ -31,7 +34,7 @@ export default function Nav(props) {
   },[username])
 
   // 点击退出，清除token
-  let signOut =()=>{
+  let signOut=()=>{
     setCookie('token','',-1)
     navigate({pathname:'/'})
     window.location.reload() 

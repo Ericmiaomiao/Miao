@@ -3,20 +3,21 @@ import {useNavigate} from 'react-router-dom'
 
 import projNavStyle from './index.module.css'
 
-export default function ProjNav(props) {
-  let navigate = useNavigate()
-  // 接收props：
-  const username = props.username[0]
-  const projname = props.projname[0] 
+// 引入redux所需：
+import { useAppSelector} from '../../../store/hooks'
+
+export default function ProjNav() {
+  const navigate = useNavigate()
+  const {userName,projName} = useAppSelector((state=>state.projDetail))
 
   return (
     <div className={projNavStyle.out}>
       <div className={projNavStyle.heart}>
         <div className={projNavStyle.top}>
-          <div onClick={()=>{navigate({pathname:'/user'},{state:{username:username}})}}
-            className={projNavStyle.username }>{username}</div>
+          <div onClick={()=>{navigate({pathname:'/user'},{state:{username:userName}})}}
+            className={projNavStyle.username }>{userName}</div>
           <div> / </div>
-          <div className={projNavStyle.projname}>{projname}</div>
+          <div className={projNavStyle.projname}>{projName}</div>
         </div>
         <div className={projNavStyle.nav}>
           <div><i className={projNavStyle.iconCode}>&#xe60c;</i>Code</div>

@@ -2,11 +2,17 @@ import React ,{useState,useEffect}from 'react'
 
 import pagingstyle from './index.module.css' 
 
-export default function Paging(props) {
+import { useAppSelector } from '../../../../store/hooks'
+
+interface IProps{
+  pagecontainer:[any[],React.Dispatch<React.SetStateAction<any[]>>]
+}
+export default function Paging(props:IProps){
 
   // 获取用户所有项目的所有数据
-  let userProj = props.userProj[0]
-  // 获取分页数组容器
+  let userProj = useAppSelector(state=>state.user.userProj)
+
+  // 获取分页数组容器设置函数
   let setpagecontainer = props.pagecontainer[1]
 
   // 初始化当前页数
@@ -18,16 +24,19 @@ export default function Paging(props) {
 
   // 初次渲染时，计算最大的页数赋给最大页数
   useEffect(()=>{
+    if(!userProj){return}
     setmaxnum(Math.ceil(userProj.length/everynum))
   },[userProj])
 
   // 分页函数处理，更新分页数组的内容
-  let fenye =(userProj)=>{
+  const fenye =(userProj)=>{
+    // 将userProj数组按相应位置分割，传入分页数组容器
     setpagecontainer(userProj.slice((currentNum-1)*everynum,(currentNum-1)*everynum+everynum))
   }
 
   // 页数改变后，执行分页函数
   useEffect(()=>{
+    if(!userProj){return}
     fenye(userProj)
   },[currentNum,userProj])
 
@@ -48,3 +57,4 @@ export default function Paging(props) {
     </div>
   )
 }
+

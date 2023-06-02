@@ -6,7 +6,7 @@ import Login from './pages/Login'
 import Detail from './pages/Detail'
 import { getCookie } from './cookie';
 
-export default function routes() {
+export default function routes(props:any) {
   let token = getCookie('token')
   return (
     <div>
@@ -18,4 +18,4 @@ export default function routes() {
       </Routes>
     </div>
   )
-}
+} 
