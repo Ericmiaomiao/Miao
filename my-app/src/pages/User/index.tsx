@@ -7,16 +7,16 @@ import { getCookie } from '../../cookie'
 import Nav from '../../components/Nav'
 import Content from '../../components/Content'
 
+// 引入redux所需：
+import { useAppDispatch } from '../../store/hooks'
+import { setUserInfo,setUserProj } from '../../store/reducers/user'
+
 export default function User() {
-  let navigate = useNavigate()
-  
-  // 初始化用户信息
-  const [userInfo,setuserInfo] = useState('')
-  // 初始化用户所有的项目
-  const [userProj,setuserProj] = useState('')
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   // 初始化贡献者名 从cookie中获取
-  let [username,setusername] = useState(getCookie('token'))
+  const [username,setusername] = useState<string>(getCookie('token'))
 
   // 页面鉴权，如果没有token跳转到登录页面
   useEffect(()=>{
@@ -24,7 +24,7 @@ export default function User() {
       alert('请登录')
       navigate('/login')
     }
-  },[])
+  },[navigate])
 
   // 请求api返回数据：  
   useEffect(()=>{
@@ -32,7 +32,8 @@ export default function User() {
     getUserInfo(username)
     .then((res)=>{
       console.log('getUserInfo请求成功',res)
-      setuserInfo(res.data)
+      // 将用户信息传入redux的store中
+      dispatch(setUserInfo(res.data))
     })
     .catch((err)=>{
       console.log('getUserInfo请求失败',err)
@@ -43,22 +44,20 @@ export default function User() {
     getUserProj(username)
     .then((res)=>{
       console.log('getUserProj请求成功',res)
-      setuserProj(res.data)
+      // 将用户项目信息传入redux的store中
+      dispatch(setUserProj(res.data))
     })
     .catch((err)=>{
       console.log('getUserProj请求失败',err)
     })
-  },[username])
+  },[username,dispatch])
 
   return (
     <div>
       {/* 用户界面导航条 */}
       <Nav username={[username,setusername]}></Nav>
       {/* 用户界面的内容 */}
-      <Content 
-      userInfo={[userInfo,setuserInfo]} 
-      userProj={[userProj,setuserProj]}
-      ></Content>
+      <Content></Content>
     </div>
   )
 }

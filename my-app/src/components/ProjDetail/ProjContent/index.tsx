@@ -2,10 +2,13 @@ import React from 'react'
 
 import projContentStyle from './index.module.css'
 
-export default function ProjContent(props) {
+import { useAppSelector } from '../../../store/hooks'
 
-  const projContent = props.projContent[0].data
-  const username = props.username[0]
+export default function ProjContent() {
+
+  // 获取用户名和项目内容信息：
+  const projContent = useAppSelector((state:any)=>state.projDetail.projContent)
+  const username = useAppSelector(state=>state.projDetail.userName)
 
   return (
     <div className={projContentStyle.out}>
@@ -34,7 +37,7 @@ export default function ProjContent(props) {
         </div>
         <div className={projContentStyle.contentFiles}>
           {projContent&&projContent.filter((item)=>{
-            if(item.type == 'dir')return true
+            if(item.type === 'dir')return true
           }).map((item,index)=>{
             return(
               <div key={index}>
@@ -45,7 +48,7 @@ export default function ProjContent(props) {
             )
           })}
           {projContent&&projContent.filter((item)=>{
-            if(item.type == 'file')return true
+            if(item.type === 'file')return true
           }).map((item,index)=>{
             return(
               <div key={index}>

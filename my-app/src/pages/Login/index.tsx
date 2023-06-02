@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React , {useRef}from 'react'
 import {useNavigate} from 'react-router-dom'
 
 import { setCookie } from '../../cookie'
@@ -7,8 +7,8 @@ import loginStyle from './index.module.css'
 
 export default function Login() {
   let navigate = useNavigate()
-  let usernameref = useRef(null)
-  let passwordref = useRef(null)
+  let usernameref = useRef<HTMLInputElement>(null)
+  let passwordref = useRef<HTMLInputElement>(null)
 
   // 点击登录后，存token，跳转用户界面
   let sign =()=>{
@@ -16,7 +16,9 @@ export default function Login() {
       alert('请输入用户名')
       return
     }
+    // 利用Cookie模拟存入token，保存时间为1天
     setCookie('token',usernameref.current.value,1)
+    // 路由跳转至用户界面
     navigate({pathname:'/user'})
   }
   return (
